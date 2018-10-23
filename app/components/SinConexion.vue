@@ -14,7 +14,7 @@
     </AbsoluteLayout>
 </template>
 <script>
-import ConexionService from '../api/ConexionService'
+import ConectionService from '../api/ConectionService'
 
 export default {
   data: () => {
@@ -22,11 +22,11 @@ export default {
   },
   methods: {
     actualizarConexion () {
-      ConexionService.getProgramaActual().then((resp) => {
+      ConectionService.getCurrentProgram().then((resp) => {
         if (resp.status !== null) {
-          ConexionService.getProgramas().then((programas) => {
+          ConectionService.getPrograms().then((programas) => {
             if (programas.status !== null) {
-              ConexionService.getPodcasts().then((podcasts) => {
+              ConectionService.getPodcasts().then((podcasts) => {
                 this.$store.commit('SET_CONEXION', podcasts.status !== null)
               }).catch((err) => console.log(err))
             } else {
